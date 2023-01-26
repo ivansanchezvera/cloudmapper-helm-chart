@@ -5,8 +5,8 @@ Add repo via command line, just type:
 Check the repo in the repo list (the repo should be in the list):
 `helm repo list`
 
-To run this helm chart you must provide values to the variables on the secret.yaml file (on base64).
-In this case, I will use override.yaml as an example. So just create a file named override.yaml and then Override the following variables with your values in ***base64***:
+To run this helm chart you must provide values to the variables on the 'secret.yaml' file (on base64).
+In this case, I will use 'override.yaml' as an example. So just create a file named 'override.yaml' and then Override the following variables with your own values encoded in ***base64***:
 - aws_key: your_aws_key
 - aws_secrets: your_aws_secrets
 - aws_region: us-east-1
@@ -23,6 +23,8 @@ aws_id: eW91cl9hd3NfaWQ=
 aws_account_name: Y2xvdWRtYXBwZXJoZWxtQGV4YW1wbGUuY29t
 aws_cidr: 172.20.0.0/16
 ```
+
+[Help encoding/decoding the values into base64](#possible-solution-make-sure-that-you-are-overriding-the-values-with-base64-ones).
 
 ### Execute the helm chart via helm install:
 `helm install cloudmapper-helm-package-local-test1 cloudmappert-chart-0.1.0.tgz --values override.yaml --debug`
@@ -57,7 +59,8 @@ or more details about the service using:
 `kubectl get pod -o wide`
 
 ### Problem: I get the Error: INSTALLATION FAILED: Secret in version "v1" cannot be handled as a Secret: illegal base64 data... message.
-### Possible solution: Make sure that you are overriding the values with base64 ones. An easy approach its described at the beggining of this document by using override.yaml .
+### Possible solution: Make sure that you are overriding the values with base64 ones. 
+An easy approach its described at the beggining of this document by using override.yaml .
 To encode values on base64 you can use an online encoder or in the command line just try:
 `echo -n <your_plaintext_value> | base64`
 
