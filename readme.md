@@ -38,7 +38,7 @@ aws_cidr: 172.20.0.0/16
 Run:
 `kubectl get all`
 
-Check that everything is ready and running. Also check the ports. Remember we need to set a NodePort to externalize our service (it ranges from 30000 to 32767 ). So the service port should within those ranges.
+Check that everything is ready and running. Also check the ports. Remember we need to set a NodePort to externalize our service (it ranges from 30000 to 32767). So the service port should within those ranges.
 
 If using minikube try exposing the service via tunnel (this is a know problem in minikube on macs as far as I know).  
 Try exposing the service doing:  
@@ -55,14 +55,14 @@ or more details about the service using:
 It is also useful to check the logs of the pods via:  
 `kubectl logs <name_of_the_pod>`  
 
-Remember that we can obtain the name of the service via:  
+Remember that we can obtain the name of the pod via:  
 `kubectl get all`  
-or more details about the service using:  
+or more details about the pod using:  
 `kubectl get pod -o wide`  
 
 ### Problem: I get the Error: INSTALLATION FAILED: Secret in version "v1" cannot be handled as a Secret: illegal base64 data... message.
 ### Possible solution: Make sure that you are overriding the values with base64 ones. 
-An easy approach its described at the beggining of this document by using override.yaml .
+An easy approach its described at the beggining of this document by using `override.yaml`.
 To encode values on base64 you can use an online encoder or in the command line just try:  
 `echo -n <your_plaintext_value> | base64`  
 
@@ -77,9 +77,9 @@ The syntax to install the helm chart is:
 For example:  
 `helm install cloudmapper-helm-repo-test1 cloudmapper-helm-chart-repo-ivan/cloudmappert-chart --values override.yaml --debug`  
 
-### Problem: My pod takes a long time running, it havent reach the ready status.
-### Possible solution: Wait at for about an hour. Since this is running the full cloudmapper configure process, it is going thru a buch of AWS resources.
-You can override this via the config/audit_config_override.yaml file. [Check the official cloudmapper repo for more info on this] (https://github.com/duo-labs/cloudmapper#using-audit-config-overrides).  
+### Problem: My pod takes a long time running, it havent reached the ready status.
+### Possible solution: Wait at for about an hour. Since this is running the full cloudmapper configure process, it is going thru a lot of AWS resources.
+You can override this via the `config/audit_config_override.yaml` file. [Check the official cloudmapper repo for more info on this] (https://github.com/duo-labs/cloudmapper#using-audit-config-overrides).  
 
 ## References:
 Based on:
