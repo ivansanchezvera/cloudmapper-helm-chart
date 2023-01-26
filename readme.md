@@ -40,39 +40,41 @@ Run:
 
 Check that everything is ready and running. Also check the ports. Remember we need to set a NodePort to externalize our service (it ranges from 30000 to 32767 ). So the service port should within those ranges.
 
-If using minikube try exposing the service via tunnel (this is a know problem in minikube on macs as far as I know). Try exposing the service doing:
-`minikube service <name_of_service>`
-Example:
-`minikube service cloudmapper-helm-repo-test1-cloudmappert-chart`
+If using minikube try exposing the service via tunnel (this is a know problem in minikube on macs as far as I know).  
+Try exposing the service doing:  
+`minikube service <name_of_service>`  
 
-Remember that we can obtain the name of the service via: 
-`kubectl get all`
-or more details about the service using:
-`kubectl get service -o wide`
+Example:  
+`minikube service cloudmapper-helm-repo-test1-cloudmappert-chart`  
 
-It is also useful to check the logs of the pods via:
-`kubectl logs <name_of_the_pod>`
+Remember that we can obtain the name of the service via:  
+`kubectl get all`  
+or more details about the service using:  
+`kubectl get service -o wide`  
 
-Remember that we can obtain the name of the service via: 
-`kubectl get all`
-or more details about the service using:
+It is also useful to check the logs of the pods via:  
+`kubectl logs <name_of_the_pod>`  
+
+Remember that we can obtain the name of the service via:  
+`kubectl get all`  
+or more details about the service using:  
 `kubectl get pod -o wide`  
 
 ### Problem: I get the Error: INSTALLATION FAILED: Secret in version "v1" cannot be handled as a Secret: illegal base64 data... message.
 ### Possible solution: Make sure that you are overriding the values with base64 ones. 
 An easy approach its described at the beggining of this document by using override.yaml .
-To encode values on base64 you can use an online encoder or in the command line just try:
-`echo -n <your_plaintext_value> | base64`
+To encode values on base64 you can use an online encoder or in the command line just try:  
+`echo -n <your_plaintext_value> | base64`  
 
-to decode just try:
+To decode just try:  
 `echo -n <your_base64encoded_value> | base64 --decode`  
 
 
 ### Problem: I get the Error: Error: INSTALLATION FAILED: cannot re-use a name that is still in use ... message.
 ### Possible solution: Just try changing the name while running the chart or specify --generate-name
-The syntax to install the helm chart is:
-`helm install <the_name_for_your_chart> cloudmapper-helm-chart-repo-ivan/cloudmappert-chart --values override.yaml --debug`
-For example:
+The syntax to install the helm chart is:  
+`helm install <the_name_for_your_chart> cloudmapper-helm-chart-repo-ivan/cloudmappert-chart --values override.yaml --debug`  
+For example:  
 `helm install cloudmapper-helm-repo-test1 cloudmapper-helm-chart-repo-ivan/cloudmappert-chart --values override.yaml --debug`  
 
 ### Problem: My pod takes a long time running, it havent reach the ready status.
