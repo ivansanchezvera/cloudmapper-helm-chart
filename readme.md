@@ -85,3 +85,4 @@ You can override this via the `config/audit_config_override.yaml` file. [Check t
 Based on:
 - the [cloudmapper repo](https://github.com/duo-labs/cloudmapper) from [duolabs](https://github.com/duo-labs)
 - the cloudkats [dockerhub image for cloudmapper](https://hub.docker.com/r/cloudkats/cloudmapper).
+  - The [cloudkats github repo](https://github.com/cloudkats/docker-tools/tree/master/cloudmapper) (to review the dockerhub image and the dockerfile)
